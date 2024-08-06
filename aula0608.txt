@@ -1,0 +1,15 @@
+node -v | versão
+npm -v | versão
+npm init -y | iniciar metadados javascript
+npm i typescript | instalar prescrita
+
+"predev": "npx tsc" | executável
+"dev": "node ./build/server.js" | 
+
+npm run dev para rodar
+
+Não precisa subir buid e nem node modules porque são geradas dinamicamente.
+
+npm install express | para servidor web
+npm i --savedev @type/express | para instalação de tipos
+
