@@ -8,8 +8,10 @@ npm i typescript | instalar prescrita
 
 npm run dev para rodar
 
-Não precisa subir buid e nem node modules porque são geradas dinamicamente.
+Não precisa subir build e nem node modules porque são geradas dinamicamente.
 
+# 
+npm install | para instalar as dependências do projeto.
 npm install express | para servidor web
 npm i --savedev @type/express | para instalação de tipos
 
