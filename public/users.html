@@ -1,0 +1,28 @@
+<!-- public/users.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuários</title>
+</head>
+<body>
+    <h1>Lista de usuários</h1>
+    <ul id="user-list"></ul>
+
+    <script>
+        const fetchUsers = async () => {
+            const response = await fetch('/users-data');
+            const users = await response.json();
+            const userList = document.getElementById('user-list');
+            
+            users.forEach(user => {
+                const li = document.createElement('li');
+                li.textContent = user.name;
+                userList.appendChild(li);
+            });
+        }
+        fetchUsers();
+    </script>
+</body>
+</html>
