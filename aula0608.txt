@@ -15,3 +15,5 @@ npm install | para instalar as dependências do projeto.
 npm install express | para servidor web
 npm i --savedev @type/express | para instalação de tipos
 
+# env
+DATABASE_URL="file:./dev.db"

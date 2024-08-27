@@ -109,6 +109,7 @@ app.get("/posts", async function (req: Request, res: Response) {
 // Criar um post para um usuário
 app.post("/post", async function (req: Request, res: Response){
   const postData = req.body;
+  const userid = req.params.id;
   try{
       const newPost = await prisma.post.create({
           data: postData,
@@ -129,6 +130,75 @@ app.post("/post", async function (req: Request, res: Response){
   }
 });
 
+// Atualizar um post
+app.put("/post/:id", async function (req: Request, res: Response){
+  const postData = req.body;
+  const postId = req.params.id;
+  try{
+      const newPost = await prisma.post.update({
+        where: {
+          id: parseInt(postId),
+        },
+          data: postData,
+      });
+      console.log(postData);
+      console.log("Post atualizado com sucesso");
+      res.json({
+        status: 200,
+        newPost: newPost
+      })
+  }catch(error){
+      console.log(postData);
+      res.json({
+          status: 500,
+          message: error,
+      })
+      console.log(error);
+  }
+});
+// deletar um post
+app.post("/post/:id", async function (req: Request, res: Response){
+  const postData = req.body;
+  const postId = req.params.id;
+  try{
+      const deletedPost = await prisma.post.delete({
+          where: {
+            id: parseInt(postId),
+          }
+      });
+      console.log(postData);
+      console.log("Post Deletado com sucesso");
+      res.json({
+        status: 200,
+        newPost: postData
+      })
+  }catch(error){
+      console.log(postData);
+      res.json({
+          status: 500,
+          message: error,
+      })
+      console.log(error);
+  }
+});
+
+// Posts feitos por um usuário
+app.get("/user/:id/posts", async function (req:Request, res:Response) {
+  const idUser = req.params.id
+  try{
+    const userPosts = await prisma.post.findMany({
+      where: {
+        id: parseInt(idUser)}
+    })
+    res.json(userPosts)
+  }catch(error){
+      res.json({
+          status: 500,
+          message: error,
+      })
+      console.log(error);
+  }
+});
 app.listen(3000, function () {
   console.log("Servidor rodando na porta 3000");
 });
