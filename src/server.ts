@@ -5,6 +5,7 @@ import { PrismaClient } from "@prisma/client";
 import UserRouter from "./routes/UserRoutes";
 
 import PostRouter from "./routes/PostRoutes";
+import CommentRouter from "./routes/CommentRoutes";
 
 const prisma = new PrismaClient();
 
@@ -13,7 +14,7 @@ app.use(express.json());
 
 app.use(UserRouter);
 app.use(PostRouter);
-
+app.use(CommentRouter)
 // Posts feitos por um usuário
 app.get("/user/:id/posts", async function (req:Request, res:Response) {
   const idUser = req.params.id
