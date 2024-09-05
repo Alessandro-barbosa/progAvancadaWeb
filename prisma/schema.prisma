@@ -24,6 +24,7 @@ model Comment {
   id        Int     @id @default(autoincrement())
   title     String
   content   String
+  evaluation String?
   published Boolean @default(false)
   author    User    @relation(fields: [authorId], references: [id])
   authorId  Int

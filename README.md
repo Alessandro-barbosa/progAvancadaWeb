@@ -1,10 +1,10 @@
 ## Lista de comandos usados no projeto
 
-- npm init -y
-- npm i typescript
-- npx tsc --init
-- npm i ts-node
-- npx tsc
+- npm init -y: Cria um arquivo package.json com as configurações padrão.
+- npm i typescript: Instala o TypeScript como dependência do projeto.
+- npx tsc --init: Gera um arquivo tsconfig.json com a configuração do TypeScript.
+- npm i ts-node: Instala o ts-node para rodar arquivos TypeScript diretamente.
+- npx tsc: Compila os arquivos TypeScript para JavaScript usando o tsconfig.json.
 
 # Código do tsconfig.json
 

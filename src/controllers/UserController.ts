@@ -1,6 +1,7 @@
 import {Request, Response} from 'express';
 
 import { PrismaClient } from '@prisma/client';
+import AiConversation from '../utils/AiAnalisys';
 
 const prisma = new PrismaClient();
 
@@ -9,6 +10,7 @@ class UserController {
     }
 
     async listUser(req: Request, res: Response){
+        
         try {
             const users = await prisma.user.findMany();
   
