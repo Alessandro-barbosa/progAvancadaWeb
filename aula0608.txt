@@ -17,3 +17,6 @@ npm i --savedev @type/express | para instalação de tipos
 
 # env
 DATABASE_URL="file:./dev.db"
+
+# api key groq
+GROQ_API_KEY=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
