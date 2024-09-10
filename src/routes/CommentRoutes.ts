@@ -11,10 +11,10 @@ CommentRouter.get("/comments", CommentController.listComments);
 //Inserir usuários
  CommentRouter.post("/comment", CommentController.createComment);
 
-// //Atualizar usuários
+// Atualizar usuários
  CommentRouter.put("/comment/:id", CommentController.updateComment);
 
-// //Deletar usuários
+// Deletar usuários
  CommentRouter.delete("/comment/:id", CommentController.deleteComment);
 
 

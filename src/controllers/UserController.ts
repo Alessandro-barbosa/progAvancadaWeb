@@ -8,7 +8,6 @@ const prisma = new PrismaClient();
 class UserController {
     constructor(){
     }
-
     async listUser(req: Request, res: Response){
         
         try {
@@ -98,7 +97,7 @@ class UserController {
           } catch (error) {
             console.log(error);
             res.status(400).json({
-              message: "Fala ao deletar o registro",
+              message: "Falha ao deletar o registro",
             });
           }
     }
