@@ -120,3 +120,6 @@ datasource db {
 ## Status Codes do HTTP
 
 - https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status#respostas_de_erro_do_servidor
+
+##
+-JWT para criar os tokens

@@ -2,6 +2,7 @@ import {Request, Response} from 'express';
 
 import { PrismaClient } from '@prisma/client';
 import AiConversation from '../utils/AiAnalisys';
+import { CreateHashPassword } from '../utils/HashPassword';
 
 const prisma = new PrismaClient();
 
@@ -26,12 +27,17 @@ class UserController {
         try {
             const userdata = req.body;
         
-            if (!userdata.email) {
+            if (!userdata.email && !userdata.password) {
               return res.status(400).json({
                 status: 400,
-                message: "Você precisa passar o email no corpo da requisição",
+                message:
+                  "Você precisa passar o email e a senha no corpo da requisição",
               });
             }
+
+            userdata.password = await CreateHashPassword(userdata.password);
+
+            console.log(userdata.password);
         
             console.log(userdata);
             const newuser = await prisma.user.create({

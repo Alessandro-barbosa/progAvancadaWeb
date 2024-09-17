@@ -6,6 +6,7 @@ import UserRouter from "./routes/UserRoutes";
 
 import PostRouter from "./routes/PostRoutes";
 import CommentRouter from "./routes/CommentRoutes";
+import AuthRoutes from "./routes/AuthRoutes";
 
 const prisma = new PrismaClient();
 
@@ -14,7 +15,8 @@ app.use(express.json());
 
 app.use(UserRouter);
 app.use(PostRouter);
-app.use(CommentRouter)
+app.use(CommentRouter);
+app.use(AuthRoutes);
 
 app.listen(3000, function () {
   console.log("Servidor rodando na porta 3000");
