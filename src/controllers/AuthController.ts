@@ -2,6 +2,7 @@ import { Request, Response} from 'express';
 import bcrypt from "bcrypt";
 import { PrismaClient} from '@prisma/client'
 import { CheckUserPassword } from '../utils/HashPassword';
+import { generateJwToken } from '../utils/JWT';
 
 const prisma = new PrismaClient();
 
@@ -42,7 +43,8 @@ class AuthController{
             }
             return res.json({
                 status: 200,
-                message: "logado com sucesso!"
+                message: "logado com sucesso!",
+                token: await generateJwToken(req.body)
             })
         }catch(error){
             console.log(error);
