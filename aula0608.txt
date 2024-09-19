@@ -17,5 +17,5 @@ npm i --savedev @type/express | para instalação de tipos
 
 # env
 DATABASE_URL="file:./dev.db"
-
+# Pacote JWT para criação de tokens
 # api key groq
