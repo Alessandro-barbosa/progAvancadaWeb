@@ -56,7 +56,7 @@ O ts-node-dev nos ajuda a ter mais produtividade uma vez que ele reinicializar o
 
 - npm i ts-node-dev --save-dev
 
-Depois de instalado, basta atualizar o script de execução do projeto para:
+Depois de instalado, basta atualizar o script (dentro de package.json) de execução do projeto para:
 
 ```
   "dev": "npx ts-node-dev ./src/server.ts"
