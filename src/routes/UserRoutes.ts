@@ -1,12 +1,13 @@
 import { Router } from "express";
 
 import UserController from "../controllers/UserController";
+import UserMiddleWare from "../middlewares/UserMiddleWare";
 
 const UserRouter = Router();
 
 
 //Listar usuários
-UserRouter.get("/users", UserController.listUser);
+UserRouter.get("/users", UserMiddleWare.analisyToken, UserController.listUser);
 
 //Inserir usuários
 UserRouter.post("/user", UserController.createUser);
