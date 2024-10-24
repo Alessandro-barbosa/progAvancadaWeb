@@ -125,3 +125,5 @@ datasource db {
 -JWT para criar os tokens
 
 -Avançar no projeto usando middleware
+##
+Fazer uma aplicação com react native para consumir a api anterior feita, telas de login, middleware de autenticação, tokkens para continuidade de sessão.
