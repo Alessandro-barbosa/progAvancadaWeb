@@ -7,7 +7,7 @@ const UserRouter = Router();
 
 
 //Listar usuários
-UserRouter.get("/users", UserMiddleWare.analisyToken, UserController.listUser);
+UserRouter.get("/users",/*UserMiddleWare.analisyToken*/UserController.listUser);
 
 //Inserir usuários
 UserRouter.post("/user", UserController.createUser);

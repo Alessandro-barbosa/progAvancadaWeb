@@ -12,8 +12,7 @@ class UserController {
     async listUser(req: Request, res: Response){
         
         try {
-            const users = await prisma.user.findMany();
-  
+            const users = await prisma.user.findMany();  
             res.json(users)
         }catch(error){
             console.log(error);
