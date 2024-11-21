@@ -22,9 +22,9 @@ class CommentController{
         const commentData = req.body;        
         try{                                        
                 const response = await AiConversation(commentData.content).then();
-                console.log(response)
+                // console.log(response)
                 const evaluation = (JSON.parse(response))
-                console.log(evaluation)
+                // console.log(evaluation)
                 const newComment = await prisma.comment.create({
                     data: {
                         ...commentData,

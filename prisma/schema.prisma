@@ -39,6 +39,7 @@ model Session{
   createdAt DateTime @default(now())
   experiationAt DateTime?
 }
+
 datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")

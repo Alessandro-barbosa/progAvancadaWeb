@@ -5,7 +5,17 @@ import { CheckUserPassword } from '../utils/HashPassword';
 import { generateJwToken } from '../utils/JWT';
 
 const prisma = new PrismaClient();
+class UserFiltrado{
+    id: number = 0;
+    name: string="";
+    email: string="";
 
+    constructor(name:string, email: string, id: number){
+        this.id = id;
+        this.email = email;
+        this.name = name;
+    }
+}
 class AuthController{
     constructor(){}
 
@@ -48,6 +58,7 @@ class AuthController{
             return res.json({
                 status: 200,
                 message: "logado com sucesso!",
+                user: user,
                 token: await generateJwToken(req.body)
             })
         }catch(error){
@@ -57,11 +68,68 @@ class AuthController{
             })
         }
     }
-    async signup(){
+    async signup(req: Request, res: Response) {
+        try {
+            const { name, email, password } = req.body;
 
+            if (!name || !email || !password) {
+                return res.json({
+                    status: 400,
+                    message: "Faltam campos no body: name, email ou password"
+                });
+            }
+            
+            const existingUser = await prisma.user.findFirst({
+                where: {
+                    email
+                }
+            });
+
+            if (existingUser) {
+                return res.json({
+                    status: 409,
+                    message: "E-mail já está cadastrado!"
+                });
+            }
+
+            // Criptografa a senha
+            const hashedPassword = await bcrypt.hash(password, 10);
+
+            // Cria o novo usuário
+            const newUser = await prisma.user.create({
+                data: {
+                    name,
+                    email,
+                    password: hashedPassword
+                }
+            });
+
+            const userFiltrado = new UserFiltrado(newUser.name as string, newUser.email, newUser.id);
+
+            return res.json({
+                status: 201,
+                message: "Usuário criado com sucesso!",
+                user: userFiltrado
+            });
+        } catch (error) {
+            console.log(error);
+            return res.status(500).json({
+                error: error
+            });
+        }
     }
-    async signout(){
-
+    async signout(req: Request, res: Response) {
+        try {
+            return res.json({
+                status: 200,
+                message: "Usuário deslogado com sucesso!"
+            });
+        } catch (error) {
+            console.log(error);
+            return res.status(500).json({
+                error: error
+            });
+        }
     }
 }
 export default new AuthController;
